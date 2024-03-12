@@ -18,6 +18,8 @@ return new class extends Migration
             $table->enum('payment', ['Efectivo', 'Tarjeta', 'QR']);
             $table->string('status', 10);
 
+            $table->unsignedBigInteger('proveedor_id');
+            $table->foreing('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
 
             $table->timestamps();
         });
