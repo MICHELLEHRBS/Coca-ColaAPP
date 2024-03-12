@@ -21,6 +21,9 @@ return new class extends Migration
             $table->unsignedBigInteger('proveedor_id');
             $table->foreing('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
 
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
