@@ -20,9 +20,27 @@ return new class extends Migration
 
             $table->unsignedBigInteger('proveedor_id');
             $table->foreing('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
+
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
             $table->timestamps();
+
         });
+
+
+        Schema::create('venta_product', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedBigInteger('venta_id');
+            $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');
+            $table->unsignedBigInteger('departament_id');
+            $table->foreign('departament_id')->references('id')->on('departaments')->onDelete('cascade');
+
+        });
+
     }
+
 
     /**
      * Reverse the migrations.
