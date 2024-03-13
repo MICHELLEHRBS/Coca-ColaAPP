@@ -9,13 +9,4 @@ class Proveedor extends Model
 {
     use HasFactory;
     protected $table = "proveedores";
-
-    public function ventas () : HasMany{
-        return $this->hasMany(Client::class);
-    }
-
-    protected $fillable = [
-        'type',
-    ];
-
 }

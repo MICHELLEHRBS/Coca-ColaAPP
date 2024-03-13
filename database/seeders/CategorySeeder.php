@@ -17,7 +17,13 @@ class CategorySeeder extends Seeder
 
         $category = new Category;
         $category->name = "Coca-Cola";
-        $category->detail = "Coca-Cola Light";
+        $category->detail = "Todo tipo de Coca-Cola";
+        $category->status ="Activo";
+        $category->save();
+
+        $category = new Category;
+        $category->name = "Fanta";
+        $category->detail = "Todo tipo de Fantas";
         $category->status ="Activo";
         $category->save();
     }
