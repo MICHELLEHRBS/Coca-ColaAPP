@@ -1,7 +1,7 @@
 <html>
     <header>
         <h1> COCA-COLA</h1>
-        <img src="c:\Users\saram\OneDrive\Imágenes\png-clipart-coca-cola-fizzy-drinks-logo-coca-cola-text-logo.png" alt="Logo de Coca-Cola" class="logo">
+
       </header>
     <header>
 
