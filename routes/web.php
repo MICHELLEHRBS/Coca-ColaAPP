@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VentaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,7 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('category.
 
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+
+
+Route::get('/ventas', [VentaController::class, 'index'])->name('ventas.index');
