@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -21,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('products.create', ['categories' => $categories]);
     }
 
     /**
@@ -29,7 +32,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'code' => 'required|min:5|max:15',
+            'name' => 'required|min:4|max:50',
+            'expiration_date' => "required|date|date_format:Y-m-d|after:2000-01-01",
+            'description' => 'required',
+            'price' => 'required|numeric|max:20000',
+            'category_id' => 'required'
+        ]);
+
+
+            $product = new Product();
+            $product->code = $request->code;
+            $product->name = $request->name;
+            $product->expiration_date = $request->expiration_date;
+            $product->description = $request->description;
+            $product->price = $request->price;
+            $product->category_id = $request->category_id;
+            $product->save();
+
+            return redirect()->action([ProductController::class, 'index']);
     }
 
     /**
@@ -37,7 +60,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+        return view('products.view', ['product' => $product]);
     }
 
     /**
@@ -45,7 +69,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('products.edit', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
@@ -53,14 +79,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->code = $request->code;
+        $product->name = strtoupper($request->name);
+        $product->expiration_date = $request->expiration_date;
+        $product->description = $request->description;
+        $product->price = $request->price * 2;
+        $product->category_id = $request->category_id;
+        $product->save();
+        return redirect()->action([ProductController::class, 'index']);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->action([ProductController::class, 'index']);
+
     }
 }
