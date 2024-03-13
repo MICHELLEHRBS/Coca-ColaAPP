@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
             'expiration_date' => $this->faker->date(),
             'description' => $this->faker->text(200),
-            'price' => $this->faker->numberBetween(200, 2000),
+            'price' => $this->faker->numberBetween(3, 16),
             'category_id' => Category::all()->random()->id,
         ];
     }
