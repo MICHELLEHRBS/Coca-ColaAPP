@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Proveedor extends Model
 {
     use HasFactory;
-    protected $table = "proveedores"
-    ;
+    protected $table = "proveedores";
 
-    public function group () : BelongsTo{
-        return $this->belongsTo(Group::class);
+    public function ventas () : HasMany{
+        return $this->hasMany(Client::class);
     }
+
+    protected $fillable = [
+        'type',
+    ];
+
 }

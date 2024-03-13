@@ -12,6 +12,23 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+        $product = new Product();
+        $product->code = "01";
+        $product->name = "COCA-COLA";
+        $product->expiration_date = "2024-02-10";
+        $product->description = "Coca-cola sin azúcar";
+        $product->price = 25;
+        $product->category_id = 1;
+        $product->save();
+
+        $product = new Product();
+        $product->code = "02";
+        $product->name = "SPRITE";
+        $product->expiration_date = "2024-02-10";
+        $product->description = "segun su tamaño";
+        $product->price = 7;
+        $product->category_id = 1;
+        $product->save();
         //
     }
 }
