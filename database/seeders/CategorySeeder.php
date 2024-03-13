@@ -21,10 +21,10 @@ class CategorySeeder extends Seeder
         $category->status ="Activo";
         $category->save();
 
-        $category = new Category;
-        $category->name = "Fanta";
-        $category->detail = "Todo tipo de Fantas";
-        $category->status ="Activo";
-        $category->save();
+        $category2 = new Category;
+        $category2->name = "Fanta";
+        $category2->detail = "Todo tipo de Fantas";
+        $category2->status ="Activo";
+        $category2->save();
     }
 }

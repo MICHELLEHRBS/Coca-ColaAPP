@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
+
+
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
